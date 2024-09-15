@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import DAshBoard from "@/components/dashboard";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content={metadata.description} />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <DAshBoard />
         {children}
       </body>
     </html>

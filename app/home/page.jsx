@@ -4,15 +4,18 @@ import { AppProvider, DashboardLayout } from "@toolpad/core";
 import {
   createTheme,
   CssBaseline,
-  Grid,
   Grid2,
+  Grid,
   Paper,
   ThemeProvider,
   Typography,
+  Container,
 } from "@mui/material";
 import { Home, Search, Segment } from "@mui/icons-material";
 import LineGraph from "@/components/homecom/chart";
 import PieCharts from "@/components/homecom/pie";
+import Calender from "@/components/homecom/calender";
+import AboutPage from "@/components/About";
 
 const NAVIGATION = [
   {
@@ -60,29 +63,43 @@ const page = () => {
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <AppProvider navigation={NAVIGATION} theme={theme}>
-          <DashboardLayout>
-            <Grid2 container spacing={2} sx={{ p: "12px" }}>
-              <Grid2 size={8}>
-                <Paper sx={{ p: "12px" }}>
-                  <LineGraph />
-                  <Typography textAlign={"center"}>
-                    Progress of Project
-                  </Typography>
-                </Paper>
-              </Grid2>
-              <Grid2 size={3.8}>
-                <Paper sx={{ p: "12px" }}>
-                  <PieCharts />
-                </Paper>
-              </Grid2>
-              <Grid2></Grid2>
-              <Grid2></Grid2>
-              <Grid2></Grid2>
-              <Grid2></Grid2>
-            </Grid2>
-          </DashboardLayout>
-        </AppProvider>
+        <Container>
+          <Grid container spacing={2} sx={{ p: "12px" }}>
+            <Grid item xl={8}>
+              <Paper sx={{ p: "12px" }}>
+                <LineGraph />
+                <Typography textAlign={"center"}>
+                  Progress of Project
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item xl={4}>
+              <Paper sx={{ p: "12px" }}>
+                <PieCharts />
+              </Paper>
+            </Grid>
+            <Grid item xl={4}>
+              <Paper>
+                <Calender />
+              </Paper>
+            </Grid>
+            <Grid item xl={4}>
+              <Paper sx={{ p: "12px" }}>
+                <Typography variant="h4">Tackle Writers' Block</Typography>
+                <Typography variant="p" sx={{ fontSize: "12px" }}>
+                  A random paragraph can also be an excellent way for a writer
+                  to tackle writers' block. Writing block can often happen due
+                  to being stuck with a current project that the writer is
+                  trying to complete. By inserting a completely random paragraph
+                  from which to begin, it can take down some of the issues that
+                  may have been causing the writers' block in the first place.{" "}
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid></Grid>
+            <Grid></Grid>
+          </Grid>
+        </Container>
       </ThemeProvider>
     </>
   );

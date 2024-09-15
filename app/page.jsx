@@ -117,22 +117,9 @@ export default function Home() {
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <AppBar position="relative">
-          <Toolbar>
-            <Image src={"/logonobg.png"} width={80} height={65} />
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: "800",
-              }}
-            >
-              Warner Spancer
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <main>
-          <div>
-            <Container maxWidth="sm" sx={{ justifyContent: "center" }}>
+        <Container>
+          <main>
+            <div>
               <Paper
                 elevation={4}
                 width="fit"
@@ -150,7 +137,12 @@ export default function Home() {
                   totam odit. Tenetur quod animi aliquid.
                 </Typography>
               </Paper>
-              <ImageList variant="quilted" cols={4} rowHeight={121}>
+              <ImageList
+                variant="quilted"
+                cols={4}
+                rowHeight={121}
+                sx={{ mx: "260px" }}
+              >
                 {itemData.map((item) => (
                   <ImageListItem
                     key={item.img}
@@ -165,9 +157,9 @@ export default function Home() {
                   </ImageListItem>
                 ))}
               </ImageList>
-            </Container>
-          </div>
-        </main>
+            </div>
+          </main>
+        </Container>
       </ThemeProvider>
     </>
   );

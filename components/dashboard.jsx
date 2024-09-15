@@ -45,15 +45,29 @@ const theme = createTheme({
   },
 });
 
-const page = () => {
+const DAshBoard = () => {
   return (
     <>
       <CssBaseline />
-      <AppProvider navigation={NAVIGATION} theme={theme}>
-        <DashboardLayout>{Children}</DashboardLayout>
+      <AppProvider
+        navigation={NAVIGATION}
+        theme={theme}
+        branding={{
+          logo: (
+            <img
+              src="logonobg.png"
+              alt="Warner Spancer"
+              width={55}
+              height={80}
+            />
+          ),
+          title: "WS",
+        }}
+      >
+        <DashboardLayout></DashboardLayout>
       </AppProvider>
     </>
   );
 };
 
-export default page;
+export default DAshBoard;
