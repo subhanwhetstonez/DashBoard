@@ -117,49 +117,51 @@ export default function Home() {
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <Container>
-          <main>
-            <div>
-              <Paper
-                elevation={4}
-                width="fit"
-                sx={{
-                  p: "36px",
-                  m: "12px",
-                  textAlign: "justify",
-                }}
-              >
-                <Typography variant="h2">Warner Spencer</Typography>
-                <Typography>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-                  voluptatibus explicabo, unde voluptate ex quas libero
-                  similique suscipit alias pariatur nam quasi neque! Quaerat,
-                  totam odit. Tenetur quod animi aliquid.
-                </Typography>
-              </Paper>
-              <ImageList
-                variant="quilted"
-                cols={4}
-                rowHeight={121}
-                sx={{ mx: "260px" }}
-              >
-                {itemData.map((item) => (
-                  <ImageListItem
-                    key={item.img}
-                    cols={item.cols || 1}
-                    rows={item.rows || 1}
-                  >
-                    <img
-                      {...srcset(item.img, 121, item.rows, item.cols)}
-                      alt={item.title}
-                      loading="lazy"
-                    />
-                  </ImageListItem>
-                ))}
-              </ImageList>
-            </div>
-          </main>
-        </Container>
+        <main>
+          <div>
+            <Paper
+              elevation={4}
+              width="fit"
+              sx={{
+                p: "36px",
+                m: "12px",
+                textAlign: "justify",
+              }}
+            >
+              <Typography variant="h2">Warner Spencer</Typography>
+              <Typography>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+                voluptatibus explicabo, unde voluptate ex quas libero similique
+                suscipit alias pariatur nam quasi neque! Quaerat, totam odit.
+                Tenetur quod animi aliquid.
+              </Typography>
+            </Paper>
+            <ImageList
+              variant="quilted"
+              cols={4}
+              rowHeight={121}
+              sx={{
+                mx: { lg: "260px", sm: "12px" },
+                m: { sm: "auto" },
+                position: "relative",
+              }}
+            >
+              {itemData.map((item) => (
+                <ImageListItem
+                  key={item.img}
+                  cols={item.cols || 1}
+                  rows={item.rows || 1}
+                >
+                  <img
+                    {...srcset(item.img, 121, item.rows, item.cols)}
+                    alt={item.title}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+              ))}
+            </ImageList>
+          </div>
+        </main>
       </ThemeProvider>
     </>
   );

@@ -14,8 +14,8 @@ const PieCharts = () => {
           ],
         },
       ]}
-      width={"500"}
-      height={312}
+      width={"400"}
+      height={336}
     />
   );
 };

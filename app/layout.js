@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import DAshBoard from "@/components/dashboard";
+import { Box } from "@mui/material";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +29,18 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <DAshBoard />
-        {children}
+        <Box
+          sx={{
+            width: { xs: "90%", xl: "80%" },
+            position: "relative",
+            display: "flex",
+            justifyContent: "end",
+            m: { sm: "auto" },
+            marginLeft: { xl: "320px", md: "320px", xs: "0px" },
+          }}
+        >
+          {children}
+        </Box>
       </body>
     </html>
   );

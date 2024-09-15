@@ -64,7 +64,7 @@ const DAshBoard = () => {
           title: "WS",
         }}
       >
-        <DashboardLayout></DashboardLayout>
+        <DashboardLayout> </DashboardLayout>
       </AppProvider>
     </>
   );

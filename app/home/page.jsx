@@ -16,6 +16,7 @@ import LineGraph from "@/components/homecom/chart";
 import PieCharts from "@/components/homecom/pie";
 import Calender from "@/components/homecom/calender";
 import AboutPage from "@/components/About";
+import BasicTable from "@/components/homecom/table";
 
 const NAVIGATION = [
   {
@@ -63,43 +64,45 @@ const page = () => {
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <Container>
-          <Grid container spacing={2} sx={{ p: "12px" }}>
-            <Grid item xl={8}>
-              <Paper sx={{ p: "12px" }}>
-                <LineGraph />
-                <Typography textAlign={"center"}>
-                  Progress of Project
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xl={4}>
-              <Paper sx={{ p: "12px" }}>
-                <PieCharts />
-              </Paper>
-            </Grid>
-            <Grid item xl={4}>
-              <Paper>
-                <Calender />
-              </Paper>
-            </Grid>
-            <Grid item xl={4}>
-              <Paper sx={{ p: "12px" }}>
-                <Typography variant="h4">Tackle Writers' Block</Typography>
-                <Typography variant="p" sx={{ fontSize: "12px" }}>
-                  A random paragraph can also be an excellent way for a writer
-                  to tackle writers' block. Writing block can often happen due
-                  to being stuck with a current project that the writer is
-                  trying to complete. By inserting a completely random paragraph
-                  from which to begin, it can take down some of the issues that
-                  may have been causing the writers' block in the first place.{" "}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid></Grid>
-            <Grid></Grid>
+        <Grid container spacing={2} sx={{ p: "20px" }}>
+          <Grid item xl={8} md={10} sm={12}>
+            <Paper sx={{ p: "12px" }}>
+              <LineGraph />
+              <Typography textAlign={"center"}>Progress of Project</Typography>
+            </Paper>
           </Grid>
-        </Container>
+          <Grid item xl={4}>
+            <Paper sx={{ p: "12px" }}>
+              <PieCharts />
+            </Paper>
+          </Grid>
+          <Grid item xl={4} md={6}>
+            <Paper>
+              <Calender />
+            </Paper>
+          </Grid>
+          <Grid item xl={8} md={10}>
+            <Paper sx={{ px: "24px", py: "111px" }}>
+              <Typography variant="h4" color="secondary" fontWeight={600}>
+                Tackle Writers' Block
+              </Typography>
+              <Typography variant="p" sx={{ fontSize: "12px" }}>
+                A random paragraph can also be an excellent way for a writer to
+                tackle writers' block. Writing block can often happen due to
+                being stuck with a current project that the writer is trying to
+                complete. By inserting a completely random paragraph from which
+                to begin, it can take down some of the issues that may have been
+                causing the writers' block in the first place.{" "}
+              </Typography>
+            </Paper>
+          </Grid>
+          <Grid item xl={12}>
+            <Paper>
+              <BasicTable />
+            </Paper>
+          </Grid>
+          <Grid></Grid>
+        </Grid>
       </ThemeProvider>
     </>
   );
