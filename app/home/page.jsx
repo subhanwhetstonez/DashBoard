@@ -35,7 +35,7 @@ const NAVIGATION = [
   },
 ];
 
-const theme = createTheme({
+export const theme = createTheme({
   palette: {
     type: "light",
     primary: {

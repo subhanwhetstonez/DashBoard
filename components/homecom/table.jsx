@@ -6,6 +6,7 @@ import {
   TableRow,
   Table,
 } from "@mui/material";
+import { theme } from "@/app/home/page";
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -28,7 +29,7 @@ const BasicTable = () => {
             sx={{
               "& td, & th": {
                 border: "1px solid black",
-                bgcolor: "tomato",
+                bgcolor: theme.palette.secondary.main,
                 color: "white",
                 fontWeight: "600",
               },
