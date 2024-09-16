@@ -128,7 +128,12 @@ export default function Home() {
                 textAlign: "justify",
               }}
             >
-              <Typography variant="h2">Warner Spencer</Typography>
+              <Typography
+                variant="h2"
+                sx={{ color: theme.palette.secondary.main }}
+              >
+                Warner Spencer
+              </Typography>
               <Typography>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
                 voluptatibus explicabo, unde voluptate ex quas libero similique
@@ -139,7 +144,7 @@ export default function Home() {
             <ImageList
               variant="quilted"
               cols={4}
-              rowHeight={121}
+              rowHeight={250}
               sx={{
                 mx: { lg: "260px", sm: "12px" },
                 m: { sm: "auto" },
@@ -153,7 +158,7 @@ export default function Home() {
                   rows={item.rows || 1}
                 >
                   <img
-                    {...srcset(item.img, 121, item.rows, item.cols)}
+                    {...srcset(item.img, 255, item.rows, item.cols)}
                     alt={item.title}
                     loading="lazy"
                   />

@@ -1,3 +1,4 @@
+import AboutSec from "@/components/aboutsec";
 import {
   Card,
   CardContent,
@@ -27,6 +28,13 @@ const AboutPage = () => {
             ullam vel asperiores id at doloribus mollitia aut nulla aspernatur
             dolore necessitatibus?
           </Typography>
+        </Card>
+        <Card
+          sx={{
+            m: "12px",
+          }}
+        >
+          <AboutSec />
         </Card>
       </Container>
     </>
