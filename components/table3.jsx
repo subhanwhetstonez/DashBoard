@@ -44,7 +44,7 @@ const BasicTable3 = () => {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow sx={{ "& td, & th": { border: "1px solid black" } }}>
+            <TableRow key={row.name} sx={{ "& td, & th": { border: "1px solid black" } }}>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.calories}</TableCell>
               <TableCell>{row.fat}</TableCell>
