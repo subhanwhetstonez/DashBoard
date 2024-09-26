@@ -1,6 +1,6 @@
 "use client";
 import { theme } from "@/components/theme";
-import { Paper, ThemeProvider } from "@mui/material";
+import { Box, Paper, ThemeProvider, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -110,6 +110,19 @@ const LoginForm = () => {
               </button>
             </div>
           </form>
+
+          <div>
+            {" "}
+            <Typography>
+              Not Registered Yet? No Worries{" "}
+              <a
+                href="/register"
+                style={{ color: theme.palette.secondary.main, fontWeight: 600 }}
+              >
+                CLICK HERE
+              </a>
+            </Typography>{" "}
+          </div>
         </div>
       </Paper>
     </ThemeProvider>

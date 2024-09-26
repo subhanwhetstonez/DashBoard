@@ -1,11 +1,13 @@
 "use client";
 import { theme } from "@/components/theme";
-import { Paper, ThemeProvider, Button } from "@mui/material";
+import { Paper, ThemeProvider, Button, Typography } from "@mui/material";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const RegisterForm = () => {
+  const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
   const {
     register,
@@ -17,6 +19,7 @@ const RegisterForm = () => {
     localStorage.setItem("formData", JSON.stringify(data));
     console.log("Form data stored:", data);
     alert("Form submitted and saved locally!");
+    router.push("/login");
   };
   return (
     <ThemeProvider theme={theme}>
@@ -89,6 +92,24 @@ const RegisterForm = () => {
               </button>
             </div>
           </form>
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              paddingTop: 12,
+            }}
+          >
+            <Typography>
+              Already Registered? Login by .
+              <a
+                href="/login"
+                style={{ color: theme.palette.secondary.main, fontWeight: 600 }}
+              >
+                CLICK HERE
+              </a>
+            </Typography>{" "}
+          </div>
         </Paper>
       </div>
     </ThemeProvider>
