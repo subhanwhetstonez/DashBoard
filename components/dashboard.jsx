@@ -1,73 +1,190 @@
 "use client";
-import React, { Children } from "react";
-import { AppProvider, DashboardLayout } from "@toolpad/core";
-import { createTheme, CssBaseline, Typography } from "@mui/material";
-import { Home, Search, Segment } from "@mui/icons-material";
+import * as React from "react";
+import PropTypes from "prop-types";
+import {
+  Button,
+  Typography,
+  Toolbar,
+  ListItem,
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Drawer,
+  Divider,
+  CssBaseline,
+  Box,
+  AppBar,
+} from "@mui/material";
+import ProfileBar from "./profilebar";
+import {
+  ApartmentRounded,
+  BusinessCenterRounded,
+  CalendarTodayRounded,
+  CrisisAlertRounded,
+  FeedRounded,
+  FingerprintRounded,
+  Groups2Rounded,
+  HailRounded,
+  ImportContactsRounded,
+  PersonRounded,
+  School,
+} from "@mui/icons-material";
 
-const NAVIGATION = [
-  {
-    kind: "header",
-    title: "different Components",
-  },
-  {
-    segment: "home",
-    title: "Home",
-    icon: <Home />,
-  },
-  {
-    segment: "about",
-    title: "About",
-    icon: <Search />,
-  },
-];
+const drawerWidth = 260;
 
-const theme = createTheme({
-  palette: {
-    type: "light",
-    primary: {
-      main: "#616161",
-    },
-    secondary: {
-      main: "#ff3d00",
-    },
-    text: {
-      disabled: "#ff2d2d",
-      hint: "rgba(18,158,255,0.61)",
-      primary: "rgba(98,98,98,0.66)",
-      secondary: "rgba(76,76,76,0.54)",
-    },
-    divider: "rgba(0,0,0,0.13)",
-  },
-  typography: {
-    h6: {
-      fontWeight: 600,
-    },
-  },
-});
+function ResponsiveDrawer(props) {
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [isClosing, setIsClosing] = React.useState(false);
 
-const DAshBoard = () => {
-  return (
-    <>
-      <CssBaseline />
-      <AppProvider
-        navigation={NAVIGATION}
-        theme={theme}
-        branding={{
-          logo: (
-            <img
-              src="logonobg.png"
-              alt="Warner Spancer"
-              width={55}
-              height={80}
-            />
-          ),
-          title: "WS",
-        }}
-      >
-        <DashboardLayout> </DashboardLayout>
-      </AppProvider>
-    </>
+  const handleDrawerClose = () => {
+    setIsClosing(true);
+    setMobileOpen(false);
+  };
+
+  const handleDrawerTransitionEnd = () => {
+    setIsClosing(false);
+  };
+
+  const handleDrawerToggle = () => {
+    if (!isClosing) {
+      setMobileOpen(!mobileOpen);
+    }
+  };
+
+  const icons = [
+    <ApartmentRounded />,
+    <ApartmentRounded />,
+    <Groups2Rounded />,
+    <PersonRounded />,
+    <School />,
+    <ImportContactsRounded />,
+    <BusinessCenterRounded />,
+    <CalendarTodayRounded />,
+    <FingerprintRounded />,
+    <CrisisAlertRounded />,
+  ];
+
+  const drawer = (
+    <div>
+      <Toolbar>
+        <img
+          src="NikeLogo.jpg"
+          alt=""
+          width={50}
+          style={{ borderRadius: 32, border: "2px solid black" }}
+        />
+        <div style={{ marginLeft: 12 }}>
+          <h4 style={{ fontWeight: "800", fontSize: 12 }}>ACA FOLLOW-UP</h4>
+          <p style={{ fontSize: 10, color: "gray" }}>STAY IN THE KNOW</p>
+        </div>
+      </Toolbar>
+      <Divider />
+      <div style={{ padding: 12 }}>
+        <p style={{ fontSize: 15, fontWeight: 600 }}>Dashboard</p>
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <img src="profile.png" width={35} />
+              </ListItemIcon>
+              <p style={{ fontSize: 15 }}>Overveiw</p>
+            </ListItemButton>
+          </ListItem>
+        </List>
+        <p style={{ fontSize: 15, fontWeight: 600 }}>School Setup</p>
+        <List>
+          {[
+            "School",
+            "Academic managment",
+            "Users",
+            "Students",
+            "Teachers",
+            "Subjects",
+            "Classes",
+            "Schedules",
+            "Attendence",
+            "Criteria",
+          ].map((text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>{icons[index]}</ListItemIcon>
+                <p style={{ fontSize: 14 }}>{text}</p>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <p style={{ fontSize: 15, fontWeight: 600 }}>ACA Hub</p>
+        <List>
+          {["Feeds", "Parents Hub"].map((text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <FeedRounded /> : <HailRounded />}
+                </ListItemIcon>
+                <p style={{ fontSize: 14 }}>{text}</p>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </div>
+    </div>
   );
+
+  // Remove this const when copying and pasting into your project.
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
+
+  return (
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <ProfileBar />
+      <Box
+        component="nav"
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        aria-label="mailbox folders"
+      >
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onTransitionEnd={handleDrawerTransitionEnd}
+          onClose={handleDrawerClose}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: { xs: "none", sm: "block" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
+          }}
+          open
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+    </Box>
+  );
+}
+
+ResponsiveDrawer.propTypes = {
+  window: PropTypes.func,
 };
 
-export default DAshBoard;
+export default ResponsiveDrawer;

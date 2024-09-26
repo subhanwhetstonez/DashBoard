@@ -1,6 +1,5 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import DAshBoard from "@/components/dashboard";
 import { Box } from "@mui/material";
 
 const geistSans = localFont({
@@ -15,7 +14,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Warner Spencer",
+  title: "Nike",
   description: "I don't know What this is",
 };
 
@@ -27,19 +26,27 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <DAshBoard />
+      <body
+        className={`${geistSans.variable} ${geistMono.variable}`}
+        style={{ backgroundColor: "#F5F5F5" }}
+      >
         <Box
           sx={{
-            width: { xs: "90%", xl: "80%" },
+            width: "100%",
+            height: "100vh",
             position: "relative",
             display: "flex",
-            justifyContent: "end",
-            m: { sm: "auto" },
-            marginLeft: { xl: "320px", md: "320px", xs: "0px" },
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 10,
+            m: "auto",
+            paddingTop: 12,
           }}
         >
-          {children}
+          <Box>
+            <img src="NikeLogo.jpg" width={180} height={180} />
+          </Box>
+          <Box sx={{ width: "100%" }}>{children}</Box>
         </Box>
       </body>
     </html>
