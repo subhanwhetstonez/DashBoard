@@ -9,6 +9,8 @@ import React from "react";
 import { theme } from "../components/theme";
 
 const ProfileBar = () => {
+  const storedData = JSON.parse(localStorage.getItem("formData"));
+
   const drawerWidth = 220;
   return (
     <>
@@ -81,7 +83,9 @@ const ProfileBar = () => {
               <hr />
               <Box sx={{ display: "flex" }}>
                 <Box sx={{ textAlign: "center" }}>
-                  <p style={{ fontWeight: 800, fontSize: 20 }}>Mr. Hani</p>
+                  <p style={{ fontWeight: 800, fontSize: 20 }}>
+                    {storedData.firstname}
+                  </p>
                   <p
                     style={{
                       fontSize: 10,
