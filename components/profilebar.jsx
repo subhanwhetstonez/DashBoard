@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   NotificationsNoneOutlined,
   MessageOutlined,
@@ -11,14 +11,19 @@ import React from "react";
 import { theme } from "../components/theme";
 
 const ProfileBar = () => {
-  if (typeof window !== "undefined") {
+  // Initialize state for storing the value from localStorage
+  const [value, setValue] = useState("");
+
+  // useEffect hook to safely access localStorage on the client side
+  useEffect(() => {
+    if (typeof window !== "undefined") {
       const storedValue = localStorage.getItem("firstname");
-      setValue(storedValue);
+      setValue(storedValue || "Guest");
     }
-  }, []);
+  }, []); // Empty dependency array ensures this runs only once
+
   const drawerWidth = 220;
 
-  
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -122,7 +127,6 @@ const ProfileBar = () => {
                     alignItems: "center",
                     display: "flex",
                     ml: 2,
-                    cursor: "pointer",
                   }}
                 >
                   <img src="userw.png" width={55} />
