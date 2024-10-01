@@ -1,3 +1,4 @@
+"use client";
 import {
   NotificationsNoneOutlined,
   MessageOutlined,
