@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import {
   NotificationsNoneOutlined,
   MessageOutlined,
@@ -10,9 +11,16 @@ import React from "react";
 import { theme } from "../components/theme";
 
 const ProfileBar = () => {
+  if (typeof window !== "undefined") {
+      const storedValue = localStorage.getItem("key");
+      setValue(storedValue);
+    }
+  }, []);
+  
   const storedData = JSON.parse(localStorage.getItem("formData"));
   const drawerWidth = 220;
 
+  
   return (
     <>
       <ThemeProvider theme={theme}>
