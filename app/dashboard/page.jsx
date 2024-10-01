@@ -1,3 +1,5 @@
+"use client";
+import { useEffect } from "react";
 import Cards from "@/components/card";
 import { Box, Paper } from "@mui/material";
 import React from "react";
@@ -6,6 +8,15 @@ import AboveTable from "@/components/abovetable";
 import AutoHeightGrid from "@/components/maintable";
 
 const page = () => {
+  const [value, setValue] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedValue = localStorage.getItem("key");
+      setValue(storedValue);
+    }
+  }, []);
+  
   return (
     <>
       <Box
