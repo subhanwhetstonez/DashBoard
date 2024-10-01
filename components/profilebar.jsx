@@ -11,14 +11,16 @@ import React from "react";
 import { theme } from "../components/theme";
 
 const ProfileBar = () => {
-  // Initialize state for storing the value from localStorage
-  const [value, setValue] = useState("");
+ const [value, setValue] = useState("Guest");
 
-  useEffect(() => {
+useEffect(() => {
   if (typeof window !== "undefined") {
-    const storedValue = localStorage.getItem("firstname");
-    console.log("Stored Firstname:", storedValue);
-    setValue(storedValue || "Guest"); 
+    const storedUser = localStorage.getItem("formData");
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      console.log("Stored User:", parsedUser);
+      setValue(parsedUser.firstname || "Guest");
+    }
   }
 }, []);
   
