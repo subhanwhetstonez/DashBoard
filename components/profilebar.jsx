@@ -14,14 +14,14 @@ const ProfileBar = () => {
   // Initialize state for storing the value from localStorage
   const [value, setValue] = useState("");
 
-  // useEffect hook to safely access localStorage on the client side
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedValue = localStorage.getItem("firstname");
-      setValue(storedValue || "Guest");
-    }
-  }, []); // Empty dependency array ensures this runs only once
-
+  if (typeof window !== "undefined") {
+    const storedValue = localStorage.getItem("firstname");
+    console.log("Stored Firstname:", storedValue);
+    setValue(storedValue || "Guest"); 
+  }
+}, []);
+  
   const drawerWidth = 220;
 
   return (
