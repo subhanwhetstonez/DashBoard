@@ -12,12 +12,10 @@ import { theme } from "../components/theme";
 
 const ProfileBar = () => {
   if (typeof window !== "undefined") {
-      const storedValue = localStorage.getItem("key");
+      const storedValue = localStorage.getItem("firstname");
       setValue(storedValue);
     }
   }, []);
-  
-  const storedData = JSON.parse(localStorage.getItem("formData"));
   const drawerWidth = 220;
 
   
@@ -92,7 +90,7 @@ const ProfileBar = () => {
               <hr />
               <Box sx={{ display: "flex" }}>
                 <Box sx={{ textAlign: "center" }}>
-                  <p style={{ fontWeight: 800, fontSize: 20 }}>{storedData.firstname}</p>
+                  <p style={{ fontWeight: 800, fontSize: 20 }}>{value}</p>
                   <p
                     style={{
                       fontSize: 10,
